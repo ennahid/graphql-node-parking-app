@@ -14,17 +14,33 @@ db.once('open', function() {
 var UsersSchema = mongoose.Schema({
   name: String
 });
-var User = mongoose.model('Kitten', UsersSchema);
 
-var fluffy = new User({ name: 'fluffy' });
+UsersSchema.methods.showUser = function () {
+  var greeting = this.name
+    ? "my name is " + this.name
+    : "I don't have a name";
+  console.log(greeting);
+}
 
-User.find(function (err, kittens) {
+var User = mongoose.model('user', UsersSchema);
+
+var user1 = new User({ name: 'adil' });
+// user1.showUser();
+
+// user1.save(function (err, user1) {
+//   if (err) return console.error(err);
+//   user1.showUser();
+// });
+
+var Users;
+
+
+User.find(function (err, users) {
   if (err) return console.error(err);
-  console.log(kittens);
-})
-
+  Users = users;
+});
 app.get('/', function(req, res){
-   res.send("hello");
+   res.send(Users);
 });
 
 app.listen(3000);
