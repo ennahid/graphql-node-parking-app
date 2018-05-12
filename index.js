@@ -16,6 +16,12 @@ var UsersSchema = mongoose.Schema({
 });
 var User = mongoose.model('Kitten', UsersSchema);
 
+var fluffy = new User({ name: 'fluffy' });
+
+User.find(function (err, kittens) {
+  if (err) return console.error(err);
+  console.log(kittens);
+})
 
 app.get('/', function(req, res){
    res.send("hello");
