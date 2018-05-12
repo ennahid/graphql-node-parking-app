@@ -48,5 +48,4 @@ app.get('/users', function(req, res){
   res.send(Users);
 });
 
-
 app.listen(3000);
