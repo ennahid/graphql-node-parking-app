@@ -1,11 +1,20 @@
 var express = require('express');
 var app = express();
-var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/parkingdb');
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected')
+});
+
+var UsersSchema = mongoose.Schema({
+  name: String
+});
+var User = mongoose.model('Kitten', UsersSchema);
 
 
 app.get('/', function(req, res){
