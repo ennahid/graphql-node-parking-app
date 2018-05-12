@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
+app.listen(3000);
+
+app.use(bodyParser());
 
 mongoose.connect('mongodb://localhost/parkingdb');
 
@@ -34,7 +38,6 @@ user1.save((err) => {
 
 var Users;
 
-
 User.find((err, users) => {
   if (err) return console.error(err);
   Users = users;
@@ -44,8 +47,12 @@ app.get('/', function(req, res){
    res.send("home");
 });
 app.get('/users', function(req, res){
-
   res.send(Users);
 });
 
-app.listen(3000);
+
+app.post('/insert', function (req, res) {
+  //returns the 
+  res.send(JSON.stringify(req.body));
+});
+
