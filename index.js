@@ -15,7 +15,7 @@ var UsersSchema = mongoose.Schema({
   name: String
 });
 
-UsersSchema.methods.showUser = function () {
+UsersSchema.methods.showUser = () => {
   var greeting = this.name
     ? "my name is " + this.name
     : "I don't have a name";
@@ -24,23 +24,28 @@ UsersSchema.methods.showUser = function () {
 
 var User = mongoose.model('user', UsersSchema);
 
-var user1 = new User({ name: 'adil' });
+var user1 = new User({ name: 'ennahid' });
 // user1.showUser();
 
-// user1.save(function (err, user1) {
-//   if (err) return console.error(err);
-//   user1.showUser();
-// });
+user1.save((err) => {
+  if (err) return console.error(err);
+  console.log('done');
+});
 
 var Users;
 
 
-User.find(function (err, users) {
+User.find((err, users) => {
   if (err) return console.error(err);
   Users = users;
 });
+
 app.get('/', function(req, res){
-   res.send(Users);
+   res.send("home");
+});
+app.get('/users', function(req, res){
+
+  res.send(Users);
 });
 
 app.listen(3000);
