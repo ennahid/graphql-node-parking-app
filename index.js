@@ -31,7 +31,7 @@ UsersSchema.methods.showUser = () => {
     console.log(greeting);
 }
 
-var User = mongoose.model('user', UsersSchema);
+/* var User = mongoose.model('user', UsersSchema);
 
 var user1 = new User({ name: 'SIMO' });
 // user1.showUser();
@@ -39,7 +39,7 @@ var user1 = new User({ name: 'SIMO' });
 user1.save((err) => {
     if (err) return console.error(err);
     console.log('done');
-});
+}); */
 
 /* var Users;
 
