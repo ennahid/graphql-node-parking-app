@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
-const User = require('./models/UserSchema');
+const { User } = require('./models/Models');
 
 app.listen(3000);
 app.use(bodyParser());
@@ -29,21 +29,17 @@ app.get('/users', function(req, res) {
 
 
 app.get('/user/:name', (req, res) => {
-    // User.find({ 'name': req.params.name }, 'name',(err, user) => {
-    //   if (err) return handleError(err);
-    //   // Prints "Space Ghost is a talk show host".
-    //   res.send(JSON.stringify(user));
-    // });
-
+  // User.find({ 'name': req.params.name }, 'name',(err, user) => {
+  //   if (err) return handleError(err);
+  //   // Prints "Space Ghost is a talk show host".
+  //   res.send(JSON.stringify(user));
+  // });
 });
 
 
 
-app.post('/insertUser', function(req, res) {
-    //returns the form data
-    var NewUser = new User({ name: req.body.name });
-    NewUser.save((err) => {
-        if (err) res.send('error');
-        res.send(JSON.stringify(req.body));
-    });
+app.post('/insertUser', function (req, res) {
+  //returns the form data
+
 });
+
