@@ -84,9 +84,6 @@ module.exports = new GraphQLSchema({
     mutation : MutationType,
 });
 
-
-
-
 // mutation{
 //     InsertUser(
 //       FirstName : "Abdelhadi",
